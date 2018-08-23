@@ -22,8 +22,10 @@ else
 }
 
 include CORE.'/common/function.php';
-include CORE.'/HEART.php';
+include CORE.'/heart.php';
 
-\core\HEART::run();
-//p(HEART);
+spl_autoload_register('\core\heart::load');
+
+\core\heart::run();
+
 

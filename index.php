@@ -9,7 +9,7 @@
 define('HEART',realpath('./'));
 define('CORE',HEART.'/core');
 define('APP',HEART.'/app');
-
+define('MODULE','app');
 define('DEBUG',true);
 
 if(DEBUG)

@@ -46,7 +46,7 @@ class heart
 
     public function assign($name, $value)
     {
-        $this->assgin[$name] = $value;
+        $this->assign[$name] = $value;
     }
 
     public function display($file)

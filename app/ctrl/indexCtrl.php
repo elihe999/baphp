@@ -10,7 +10,7 @@ class indexCtrl extends \core\heart
         // p($model);
         $data = "hello";
         $title = 'View file';
-        $this->assign('title:',$title);
+        $this->assign('title',$title);
         $this->assign('data', $data);
         $this->display('index.html');
     }

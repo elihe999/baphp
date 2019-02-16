@@ -6,8 +6,12 @@ class heart
 {
     public static $classMap = array();
     public $assign;
+
+    // run
     static public function run()
     {
+        \core\lib\log::init();                                                  //init log setting
+        // \core\lib\log::log('test');
         $route = new \core\lib\route();
         // p($route);exit();                                                    // DEBUG ROUTE
         $ctrlClass = $route->ctrl;
@@ -19,6 +23,7 @@ class heart
             include $ctrlfile;
             $ctrl = new $newctrlClass();
             $ctrl->action();
+            \core\lib\log::log('ctrl: '.$ctrlClass. '      ' .'action: '.$action);
         } else {
             throw new \Exception('Can not find ' . $ctrlClass);
         }

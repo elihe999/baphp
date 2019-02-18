@@ -12,12 +12,9 @@ define('APP',HEART.'/app');
 define('MODULE','app');
 define('DEBUG',true);
 
-if(DEBUG)
-{
+if ( DEBUG ) {
     ini_set('display_error','On');
-}
-else
-{
+} else {
     ini_set('display_error','off');
 }
 

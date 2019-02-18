@@ -4,6 +4,7 @@ use core\lib\model;
 
 class indexCtrl extends \core\heart
 {
+    //action should not exist
     //index control
     public function index()
     {

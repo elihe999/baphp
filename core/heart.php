@@ -22,10 +22,10 @@ class heart
         if ( is_file($ctrlfile) ) {
             include $ctrlfile;
             $ctrl = new $newctrlClass();
-            $ctrl->index();
+            $ctrl->$action();                                                       //read $action
             \core\lib\log::log('ctrl: '.$ctrlClass. '      ' .'action: '.$action);
         } else {
-            throw new \Exception('Can not find ' . $ctrlClass);
+            throw new \Exception('Can not find ctrl class ' . $ctrlClass);
         }
     }
 
@@ -56,11 +56,8 @@ class heart
 
     public function display($file)
     {
-        $file = APP . '/views/' . $file;
-        if ( is_file($file) ) {
-            // p($this->assign);exit();
-            // extract($this->assign);
-            // include $file;
+        $file_path = APP . '/views/' . $file;
+        if ( is_file($file_path) ) {
             require_once HEART.'/vendor/autoload.php';
             // require_once(HEART.'twig/Autoloader.php');
             // \Twig_Autoloader::register();                            //autoload
@@ -69,7 +66,8 @@ class heart
                 'cache' => HEART.'/log/twig',
                 'debug' => DEBUG
             ));
-            $template = $twig->load('index.html');
+            p($file);
+            $template = $twig->load($file);
             $template->display($this->assign?$this->assign:'');
         };
     }

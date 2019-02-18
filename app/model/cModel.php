@@ -5,6 +5,9 @@ use core\lib\model;
 
 class cModel extends model
 {
+    /**
+     * extend medoo
+     */
     public $table = 'bosera000930';
     public function lists()
     {

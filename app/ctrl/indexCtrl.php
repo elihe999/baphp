@@ -1,23 +1,25 @@
 <?php
-
 namespace app\ctrl;
 use core\lib\model;
 
-class indexCtrl extends \core\heart
+class indexCtrl extends BaseController
 {
+    //action should not exist
     //index control
-    public function action()
+    public function index()
     {
-        $model = new \core\lib\model();
-        p($model);
-        // $temp = \core\lib\conf::get('CTRL', 'route');
-        // $temp = \core\lib\conf::get('ACTION', 'route');
-        
-        print_r($model);
-        $data = "hello";
-        $title = 'View file';
-        $this->assign('title',$title);
+        // $model = new \app\model\cModel();
+        // $ret = $model->lists();
+        // dump($ret);
+        $data = 'hello world';
         $this->assign('data', $data);
         $this->display('index.html');
+    }
+
+    public function test()
+    {
+        $data = 'test';
+        $this->assign('data', $data);
+        $this->display('test.html');
     }
 }

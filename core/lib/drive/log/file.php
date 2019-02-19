@@ -21,11 +21,12 @@ class file
          *  2. write log
          */
         // p($this->path);exit();
-        if(!is_dir($this->path.date('YmdH'))) {
-            mkdir($this->path.date('YmdH'),'0777',true);
+        if(!is_dir($this->path.date('Ymd'))) {
+            mkdir($this->path.date('Ymd'),'0777',true);
+            chmod($this->path.date('Ymd'), 0777);
         }
 
-        return file_put_contents($this->path.date('YmdH').'/'.$file.'.php',date('Y-m-d H:i:s').json_encode($message).PHP_EOL, FILE_APPEND);
+        return file_put_contents($this->path.date('Ymd').'/'.$file.'.php',date('Y-m-d H:i:s').json_encode($message).PHP_EOL, FILE_APPEND);
     }
 }
 

@@ -26,7 +26,7 @@ class file
             chmod($this->path.date('Ymd'), 0777);
         }
 
-        return file_put_contents($this->path.date('Ymd').'/'.$file.'.php',date('Y-m-d H:i:s').json_encode($message).PHP_EOL, FILE_APPEND);
+        return file_put_contents($this->path.date('Ymd').'/'.$file.'.php',date('Y-m-d H:i:s').str_pad(json_encode($message), 60, " ", STR_PAD_LEFT).PHP_EOL, FILE_APPEND);
     }
 }
 

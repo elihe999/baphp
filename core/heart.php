@@ -22,10 +22,36 @@ class heart
         if ( is_file($ctrlfile) ) {
             include $ctrlfile;
             $ctrl = new $newctrlClass();
-            $ctrl->$action();                                                       //read $action
-            \core\lib\log::log('ctrl: '.$ctrlClass. '      ' .'action: '.$action);
+            //read $action
+            if (method_exists($ctrl, $action)) {
+                call_user_func([$ctrl, $action]);
+                \core\lib\log::log('ctrl: '.$ctrlClass. '      ' .'action: '.$action);
+            } else {
+                if (DEBUG) {
+                    throw new \Exception($action . ' (action) NOT EXIST');
+                } else {
+                    if ( is_file($ctrlfile) ) {
+                        call_user_func([$ctrl, "showError"]);                   //load 404 show action
+                    } else {
+                        throw new \Exception('FILE MISSING: 404.html');
+                    }
+                }
+            }
         } else {
-            throw new \Exception('Can not find ctrl class ' . $ctrlClass);
+            if (DEBUG) {
+                throw new \Exception($ctrlClass . ' (ctrl class) NOT EXIST');
+            }
+            else {
+                $ctrlfile = APP.'/ctrl/BaseController.php';
+                $newctrlClass = '\\'.MODULE.'\ctrl\\'.'BaseController';
+                if ( is_file($ctrlfile) ) {
+                    include $ctrlfile;
+                    $ctrl = new $newctrlClass();
+                    call_user_func([$ctrl, "showError"]);                       //load 404 show action
+                } else {
+                    throw new \Exception('FILE MISSING: 404.html');
+                }
+            }
         }
     }
 
@@ -60,13 +86,13 @@ class heart
         if ( is_file($file_path) ) {
             require_once HEART.'/vendor/autoload.php';
             // require_once(HEART.'twig/Autoloader.php');
-            // \Twig_Autoloader::register();                            //autoload
+            // \Twig_Autoloader::register();                                    //autoload
             $loader = new \Twig\Loader\FilesystemLoader(APP.'/views');
             $twig = new \Twig\Environment($loader, array(
                 'cache' => HEART.'/log/twig',
                 'debug' => DEBUG
             ));
-            p($file);
+            // p($file);
             $template = $twig->load($file);
             $template->display($this->assign?$this->assign:'');
         };

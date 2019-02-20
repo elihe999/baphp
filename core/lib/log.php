@@ -16,7 +16,7 @@ class log
         self::$class = new $class;
     }
 
-    static public function log($name, $file = "log")
+    static public function log($name, $file = 'log')
     {
         self::$class->log($name, $file);
     }

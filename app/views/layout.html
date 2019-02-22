@@ -1,13 +1,41 @@
-<html>
-{% include 'header.html.twig' with {'appleName':a} %}
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    {% include 'unit/header.html.twig' %}
+</head>
 <body>
+    <div id="wrapper">
+        <nav class="navbar navbar-default top-navbar" role="navigation">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="/index/index"><i class="fa fa-gear"></i><strong>{% block title %}{% endblock title %}</strong></a>
+            </div>
+            <ul class="nav navbar-top-links navbar-right">
+            </ul>
+        </nav>
+        <!--/. NAV TOP  -->
+        <nav class="navbar-default navbar-side" role="navigation">
+            <div class="sidebar-collapse">
+                <ul class="nav" id="main-menu">
 
-<content>
-    {% block content %}
+                </ul>
+            </div>
+        </nav>
+        <!-- /. NAV SIDE  -->
+        <div id="page-wrapper" >
+            <div id="page-inner">
+			    <div class="row">
+                </div>
+                {% block content %}
 
-    {% endblock content %}
-</content>
-
-<footer>footer</footer>
+                {% endblock content %}
+                <!-- /. ROW  -->
+			</div>
+            <!-- /. PAGE INNER  -->
+        </div>
+        <!-- /. PAGE WRAPPER  -->
+    </div>
+    <!-- /. WRAPPER  -->
+   
 </body>
 </html>
+

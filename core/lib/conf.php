@@ -13,9 +13,10 @@ class conf
          */
         // p(self::$conf);
         if(isset(self::$conf[$file])) {
-            return self::$conf[$file][$name];
+            // return self::$conf[$file][$name];
+            return isset(self::$conf[$file][$name]) ? self::$conf[$file][$name] : false;
         } else {
-            // p(1); // Q: repeat??? A: path include time incra 
+            // p(1); // Q: repeat??? A: path include time incra
             $path = HEART . '/core/config/' . $file . '.php';
             if(is_file($path)) {
                 $conf = include $path;

@@ -2,6 +2,3 @@
 {% block content %}
 {{ data }}
 {% endblock content %}
-{% block title %}
-{{ title }}
-{% endblock title %}

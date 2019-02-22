@@ -8,12 +8,12 @@ class indexCtrl extends BaseController
     //index control
     public function index()
     {
-        // $model = new \app\model\cModel();
-        // $ret = $model->lists();
-        // dump($ret);
-        // $command = new \app\command\shell\clearlog("tests");
-        // $ret = $command->start();
-        // dump($ret);
+        $model = new \app\model\cModel();
+        $ret = $model->lists();
+        dump($ret);
+        $command = new \app\command\shell\arpScan();
+        $ret = $command->start();
+        dump($ret);
         $data = 'hello world';
         $this->assign('data', $data);
         $this->assign('title', "index");

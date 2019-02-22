@@ -8,7 +8,7 @@ class cModel extends model
     /**
      * extend medoo
      */
-    public $table = 'bosera000930';
+    public $table = 'device_tb';
     public function lists()
     {
         $ret = $this->select($this->table,'*');

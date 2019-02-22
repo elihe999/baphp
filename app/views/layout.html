@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     {% include 'unit/header.html.twig' %}
-</head>
+    </head>
 <body>
     <div id="wrapper">
         <nav class="navbar navbar-default top-navbar" role="navigation">
@@ -14,9 +14,12 @@
         </nav>
         <!--/. NAV TOP  -->
         <nav class="navbar-default navbar-side" role="navigation">
+            <div id="sideNav" href=""><i id="navSlideImage" class="fa fa-caret-left"></i></div>
             <div class="sidebar-collapse">
                 <ul class="nav" id="main-menu">
-
+                {% for item in sidemenu %}
+                    <li><a {% if activeSideMenu == item.name %} class="active-menu" {% endif %} href='{{item.herf}}'><i class='{{item.label}}'></i> {{item.name}} </a></li>
+                {% endfor %}
                 </ul>
             </div>
         </nav>

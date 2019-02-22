@@ -1,6 +1,7 @@
 <?php
 
-namespace core;
+// namespace core\common;
+// Global they
 
 function p($var) {
     if ( is_bool($var) ) {
@@ -12,12 +13,11 @@ function p($var) {
     }
 }
 
-
 /**
  * insert html herf
  * @param: $url, $time=0, $msg:alert
  */
-function php_jp($url, $time=0, $msg='') {
+function php_redirect($url, $time=0, $msg='') {
 	sleep($time);                                                   //sleep($) second
 	echo "<script language='javascript' type='text/javascript'>";
 	if ( !empty($msg) ) {
@@ -37,4 +37,92 @@ function object_to_array($obj) {
         $arr[$key] = $val;
     }
     return $arr;
+}
+
+function debug(...$var)
+{
+    if (function_exists('dump')) {
+        array_walk($var, function ($v) {
+            dump($v);
+        });
+    } else {
+        array_walk($var, function ($v) {
+            print_r($v);
+        });
+    }
+    exit();
+}
+
+/**
+ * @param string $str
+ * @param string $filter
+ * @param string $default
+ * @return mix
+ */
+function get($str = 'false', $filter = '', $default = false)
+{
+    if ($str !== false) {
+        $return = isset($_GET[$str]) ? $_GET[$str] : false;
+        if ($return) {
+            switch ($filter) {
+                case 'int':
+                    if (!is_numeric($return)) {
+                        return $default;
+                    }
+                    break;
+                default:
+                    $return = htmlspecialchars($return);
+
+            }
+            return $return;
+        } else {
+            return $default;
+        }
+    } else {
+        return $_GET;
+    }
+}
+
+/**
+ * @param $str
+ * @param $filter
+ * @param $default
+ * @return mix
+ */
+function post($str = false, $filter = '', $default = false)
+{
+    if ($str !== false) {
+        $return = isset($_POST[$str]) ? $_POST[$str] : false;
+        if ($return !== false) {
+            switch ($filter) {
+                case 'int':
+                    if (!is_numeric($return)) {
+                        return $default;
+                    }
+                    break;
+                default:
+                    $return = htmlspecialchars($return);
+            }
+            return $return;
+        } else {
+            return $default;
+        }
+    } else {
+        return $_POST;
+    }
+}
+
+function http_method()
+{
+    if (isset($_SERVER['REQUEST_METHOD']) && $_SERVER['REQUEST_METHOD'] == 'POST') {
+        return 'POST';
+    } else {
+        return 'GET';
+    }
+}
+
+function json($array)
+{
+    header('Content-Type:application/json; charset=utf-8');
+    echo json_encode($array);
 }

@@ -18,7 +18,7 @@ class heart
         $action = $route->action;
         $ctrlfile = APP.'/ctrl/'.$ctrlClass.'Ctrl.php';
         $newctrlClass = '\\'.MODULE.'\ctrl\\'.$ctrlClass.'Ctrl';
-        // p($ctrlfile);exit();
+
         if ( is_file($ctrlfile) ) {
             include $ctrlfile;
             $ctrl = new $newctrlClass();
@@ -77,6 +77,7 @@ class heart
 
     public function assign($name, $value)
     {
+        //render here
         $this->assign[$name] = $value;
     }
 

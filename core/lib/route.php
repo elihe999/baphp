@@ -2,11 +2,13 @@
 
 namespace core\lib;
 use core\lib\conf;
+// use core\common\function;
+
 class route
 {
     public $ctrl;
     public $action;
-    public function __construct()    
+    public function __construct()
     {
         /**
          *  example.com/index/index
@@ -41,7 +43,6 @@ class route
                 }
                 $i = $i + 2;
             }
-            // p($_GET);
         } else {
             $this->ctrl = conf::get('CTRL','route');
             $this->action = conf::get('ACTION','route');

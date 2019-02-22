@@ -14,11 +14,18 @@ RewriteRule ^(.*)$ index.php [QSA,L]
 ```
 
 > httpd.conf
- AllowOverride All
+* AllowOverride All
 
 > php.ini
+* Posix
+* pcntl
 
 
+
+## Notice / Reference
+
+\[1\] ECharts: A Declarative Framework for Rapid Construction of Web-based Visualization
+- Deqing Li,Honghui Mei, Yi Shen, Shuang Su, Wenli Zhang, Junting Wang, Ming Zu, Wei Chen.
 
 ## frame workflow
 ```flow

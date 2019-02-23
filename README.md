@@ -27,6 +27,12 @@ RewriteRule ^(.*)$ index.php [QSA,L]
 \[1\] ECharts: A Declarative Framework for Rapid Construction of Web-based Visualization
 - Deqing Li,Honghui Mei, Yi Shen, Shuang Su, Wenli Zhang, Junting Wang, Ming Zu, Wei Chen.
 
+[2] Fly.js
+
+* https://github.com/wendux/fly
+
+  
+
 ## frame workflow
 ```flow
 st=>start: enter

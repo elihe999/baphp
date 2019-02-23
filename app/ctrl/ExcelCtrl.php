@@ -2,7 +2,7 @@
 namespace app\ctrl;
 use core\lib\model;
 
-class indexCtrl extends BaseController
+class ExcelCtrl extends BaseController
 {
     //action should not exist
     //index control

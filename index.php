@@ -29,5 +29,3 @@ include CORE.'/heart.php';
 spl_autoload_register('\core\heart::load');
 
 \core\heart::run();
-
-

@@ -14,6 +14,9 @@ class indexCtrl extends BaseController
         // $command = new \app\command\shell\arpScan();
         // $ret = $command->start();
         // dump($ret);
+        // $model = new \app\model\redisModel();
+        // $ret = $model->connect_server();
+        // dump($ret);
 
         $file =  fopen(HEART.'/log/cache/SettingATE',"r");
         $settingArr = array();

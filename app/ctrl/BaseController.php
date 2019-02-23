@@ -15,4 +15,9 @@ class BaseController extends \core\heart
         $this->assign('data', $data);
         $this->display('errors/404.html.twig');
     }
+
+    public function index()
+    {
+        $this->display('errors/404.process.html.twig');
+    }
 }

@@ -11,27 +11,15 @@ class indexCtrl extends BaseController
         // $model = new \app\model\cModel();
         // $ret = $model->lists();
         // dump($ret);
-        // $command = new \app\command\shell\arpScan();
-        // $ret = $command->start();
+        $command = new \app\command\shell\arpScan();
+        $ret = $command->start();
+        dump($ret);
+        // $command = new \app\command\shell\clearlog("1");
+        // $ret = $command->start("hear");
         // dump($ret);
         // $model = new \app\model\redisModel();
         // $ret = $model->connect_server();
         // dump($ret);
-
-        $file =  fopen(HEART.'/log/cache/SettingATE',"r");
-        $settingArr = array();
-        if ($file) {
-            while(!feof($file)) {
-                $line = fgets($file);
-                $line = substr($line,0,strlen($line)-1);
-                $temp = explode("=",$line);
-                if ($temp[0] == "")
-                    continue;
-                $settingArr[$temp[0]] = $temp[1];
-            }
-            fclose($file);
-            $settingJason = json_encode($settingArr);
-        }
 
         $sidemenu = array(
             array('name'=>'Dashboard', 'label'=>'fa fa-file-text-o', 'herf'=>'/index/index'),
